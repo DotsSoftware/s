@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dots Consultants | Mobile App Development Experts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(101,87,255,0.9) 0%, rgba(155,81,224,0.85) 50%, rgba(203,75,195,0.8) 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6557FF 0%, #9B51E0 50%, #CB4BC3 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6557FF 0%, #9B51E0 50%, #CB4BC3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: perspective(1000px) rotateX(0deg);
+        }
+        
+        .service-card:hover {
+            transform: perspective(1000px) rotateX(10deg) translateY(-8px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-card {
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+        
+        .portfolio-card .portfolio-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .btn-hover-effect {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-hover-effect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .input-focus-effect:focus {
+            box-shadow: 0 0 0 3px rgba(101, 87, 255, 0.3);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .counter-item {
+            transition: all 0.3s ease;
+        }
+        
+        .counter-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .app-screen {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .hamburger {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
+        <nav class="glass-effect px-6 py-3">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-white rounded-lg">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#6557FF"/>
+                            <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" fill="white"/>
+                            <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" fill="#6557FF"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-white">Dots Consultants</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-white hover:text-white transition-colors font-medium nav-link">
+                        Home
+                    </a>
+                    <a href="#services" class="text-white hover:text-white transition-colors font-medium nav-link">
+                        Services
+                    </a>
+                    <a href="#portfolio" class="text-white hover:text-white transition-colors font-medium nav-link">
+                        Portfolio
+                    </a>
+                    <a href="#process" class="text-white hover:text-white transition-colors font-medium nav-link">
+                        Process
+                    </a>
+                    <a href="#about" class="text-white hover:text-white transition-colors font-medium nav-link">
+                        About
+                    </a>
+                    <a href="#contact" class="text-white hover:text-white transition-colors font-medium nav-link">
+                        Contact
+                    </a>
+                    <a href="#contact" class="bg-white text-purple-600 hover:bg-purple-100 px-6 py-2 rounded-full text-sm font-semibold transition-all btn-hover-effect ml-4">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white focus:outline-none hamburger" id="mobile-menu-btn">
+                    <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-white transition-all"></span>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-gradient-to-b from-purple-900 to-indigo-900 bg-opacity-95 z-40 md:hidden flex items-center justify-center" id="mobile-menu">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 px-6">
+                <a href="#home" class="text-white text-2xl hover:text-purple-300 transition-colors mobile-link relative group">
+                    Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#services" class="text-white text-2xl hover:text-purple-300 transition-colors mobile-link relative group">
+                    Services
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#portfolio" class="text-white text-2xl hover:text-purple-300 transition-colors mobile-link relative group">
+                    Portfolio
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#process" class="text-white text-2xl hover:text-purple-300 transition-colors mobile-link relative group">
+                    Process
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#about" class="text-white text-2xl hover:text-purple-300 transition-colors mobile-link relative group">
+                    About
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="text-white text-2xl hover:text-purple-300 transition-colors mobile-link relative group">
+                    Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <button class="absolute top-6 right-6 text-white text-2xl focus:outline-none" id="close-mobile-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+                 alt="App Development" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white fade-in animate__animated animate__fadeInDown">
+                Transforming Ideas Into <span class="gradient-text">Digital Experiences</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-white opacity-90 max-w-3xl mx-auto fade-in animate__animated animate__fadeIn animate__delay-1s">
+                We design and develop beautiful, functional mobile applications that users love. From concept to launch, we're with you every step of the way.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in animate__animated animate__fadeIn animate__delay-2s">
+                <a href="#contact" class="bg-white text-purple-600 hover:bg-purple-100 px-8 py-4 rounded-full text-lg font-semibold transition-all btn-hover-effect">
+                    Get Started
+                </a>
+                <a href="#portfolio" class="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 rounded-full text-lg font-semibold transition-all btn-hover-effect">
+                    View Our Work
+                </a>
+            </div>
+            
+            <div class="mt-16 fade-in animate__animated animate__fadeIn animate__delay-3s">
+                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+                     alt="App Screens" 
+                     class="max-w-2xl mx-auto app-screen rounded-xl shadow-2xl">
+            </div>
+            
+            <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+                <a href="#services" class="text-white animate-bounce">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <p class="text-gray-500 mb-4">TRUSTED BY INNOVATIVE COMPANIES</p>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                    <img src="https://via.placeholder.com/120x40?text=Company+1" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="https://via.placeholder.com/120x40?text=Company+2" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="https://via.placeholder.com/120x40?text=Company+3" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="https://via.placeholder.com/120x40?text=Company+4" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                    <img src="https://via.placeholder.com/120x40?text=Company+5" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="counter-item bg-white p-6 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-purple-600 mb-2" data-count="150">0</div>
+                    <div class="text-gray-600">Apps Developed</div>
+                </div>
+                <div class="counter-item bg-white p-6 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-purple-600 mb-2" data-count="8">0</div>
+                    <div class="text-gray-600">Years Experience</div>
+                </div>
+                <div class="counter-item bg-white p-6 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-purple-600 mb-2" data-count="95">0</div>
+                    <div class="text-gray-600">Satisfied Clients</div>
+                </div>
+                <div class="counter-item bg-white p-6 rounded-xl text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-purple-600 mb-2" data-count="500">0</div>
+                    <div class="text-gray-600">Cups of Coffee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-purple-600 font-semibold mb-2 inline-block">OUR SERVICES</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Comprehensive App Development</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    From concept to deployment, we offer end-to-end mobile app development services tailored to your needs.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Mobile App Development</h3>
+                    <p class="text-gray-600">
+                        Custom iOS and Android applications built with the latest technologies to deliver exceptional user experiences.
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Swift</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Kotlin</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">Flutter</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-paint-brush text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">UI/UX Design</h3>
+                    <p class="text-gray-600">
+                        Beautiful, intuitive interfaces designed to engage users and enhance your brand identity.
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Figma</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Sketch</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">Adobe XD</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Backend Development</h3>
+                    <p class="text-gray-600">
+                        Robust backend systems and APIs to power your mobile applications with scalability in mind.
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Node.js</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Firebase</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-search-dollar text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">App Marketing</h3>
+                    <p class="text-gray-600">
+                        Strategic marketing plans to launch your app successfully and acquire your first users.
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">ASO</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Social Media</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">PPC</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">App Maintenance</h3>
+                    <p class="text-gray-600">
+                        Ongoing support and updates to keep your app running smoothly and securely.
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Updates</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Bug Fixes</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">Security</span>
+                    </div>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-md hover:shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Analytics & Optimization</h3>
+                    <p class="text-gray-600">
+                        Data-driven insights to improve user engagement and retention for your mobile app.
+                    </p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">Google Analytics</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-purple-600 font-semibold mb-2 inline-block">OUR PROCESS</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">How We Build Your App</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Our proven development process ensures quality, efficiency, and transparency at every stage.
+                </p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 h-full w-0.5 bg-purple-200 transform -translate-x-1/2"></div>
+                
+                <!-- Process Steps -->
+                <div class="space-y-12 md:space-y-0">
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:odd:flex-row-reverse">
+                        <div class="flex-1 md:px-12 mb-8 md:mb-0 fade-in">
+                            <div class="bg-white p-8 rounded-xl shadow-md">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white mb-4">
+                                    <span class="text-xl font-bold">1</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Discovery & Planning</h3>
+                                <p class="text-gray-600">
+                                    We start by understanding your vision, target audience, and business goals to create a detailed project roadmap.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex w-24 h-24 bg-white rounded-full shadow-md items-center justify-center mx-4 z-10">
+                            <i class="fas fa-lightbulb text-3xl text-purple-600"></i>
+                        </div>
+                        <div class="flex-1 md:px-12"></div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:odd:flex-row-reverse">
+                        <div class="flex-1 md:px-12"></div>
+                        <div class="hidden md:flex w-24 h-24 bg-white rounded-full shadow-md items-center justify-center mx-4 z-10">
+                            <i class="fas fa-pencil-ruler text-3xl text-purple-600"></i>
+                        </div>
+                        <div class="flex-1 md:px-12 mb-8 md:mb-0 fade-in">
+                            <div class="bg-white p-8 rounded-xl shadow-md">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white mb-4">
+                                    <span class="text-xl font-bold">2</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">UI/UX Design</h3>
+                                <p class="text-gray-600">
+                                    Our designers create wireframes and prototypes, focusing on intuitive navigation and engaging user experiences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:odd:flex-row-reverse">
+                        <div class="flex-1 md:px-12 mb-8 md:mb-0 fade-in">
+                            <div class="bg-white p-8 rounded-xl shadow-md">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white mb-4">
+                                    <span class="text-xl font-bold">3</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Development</h3>
+                                <p class="text-gray-600">
+                                    Our developers build your app using agile methodologies, with regular updates and testing throughout the process.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex w-24 h-24 bg-white rounded-full shadow-md items-center justify-center mx-4 z-10">
+                            <i class="fas fa-code text-3xl text-purple-600"></i>
+                        </div>
+                        <div class="flex-1 md:px-12"></div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:odd:flex-row-reverse">
+                        <div class="flex-1 md:px-12"></div>
+                        <div class="hidden md:flex w-24 h-24 bg-white rounded-full shadow-md items-center justify-center mx-4 z-10">
+                            <i class="fas fa-vial text-3xl text-purple-600"></i>
+                        </div>
+                        <div class="flex-1 md:px-12 mb-8 md:mb-0 fade-in">
+                            <div class="bg-white p-8 rounded-xl shadow-md">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white mb-4">
+                                    <span class="text-xl font-bold">4</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Testing & QA</h3>
+                                <p class="text-gray-600">
+                                    We rigorously test your app across devices and scenarios to ensure flawless performance before launch.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:odd:flex-row-reverse">
+                        <div class="flex-1 md:px-12 mb-8 md:mb-0 fade-in">
+                            <div class="bg-white p-8 rounded-xl shadow-md">
+                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white mb-4">
+                                    <span class="text-xl font-bold">5</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Deployment & Launch</h3>
+                                <p class="text-gray-600">
+                                    We guide you through the app store submission process and help plan a successful launch strategy.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex w-24 h-24 bg-white rounded-full shadow-md items-center justify-center mx-4 z-10">
+                            <i class="fas fa-rocket text-3xl text-purple-600"></i>
+                        </div>
+                        <div class="flex-1 md:px-12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-purple-600 font-semibold mb-2 inline-block">OUR WORK</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Explore some of our recent mobile app development projects that showcase our expertise.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="portfolio-card relative rounded-xl overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+                         alt="Fitness App" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10 portfolio-content">
+                        <h3 class="text-xl font-semibold mb-2">FitTrack Pro</h3>
+                        <p class="text-purple-100">Fitness tracking app with AI-powered workout plans</p>
+                        <div class="mt-2">
+                            <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium mr-1">iOS</span>
+                            <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium">Android</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card relative rounded-xl overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+                         alt="E-commerce App" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10 portfolio-content">
+                        <h3 class="text-xl font-semibold mb-2">ShopEasy</h3>
+                        <p class="text-purple-100">Mobile commerce platform with AR product preview</p>
+                        <div class="mt-2">
+                            <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium mr-1">iOS</span>
+                            <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium">Android</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card relative rounded-xl overflow-hidden h-80">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+                         alt="Finance App" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white z-10 portfolio-content">
+                        <h3 class="text-xl font-semibold mb-2">WealthTrack</h3>
+                        <p class="text-purple-100">Personal finance management with investment tracking</p>
+                        <div class="mt-2">
+                            <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium mr-1">iOS</span>
+                            <span class="inline-block bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium">Android</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="#contact" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all btn-hover-effect">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-purple-600 font-semibold mb-2 inline-block">CLIENT FEEDBACK</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Don't just take our word for it - hear from our satisfied customers.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-sm hover:shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Michael R.</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Dots Consultants transformed our idea into a beautiful, functional app that our users love. Their attention to detail and commitment to quality is exceptional."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-sm hover:shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Sarah K.</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The team at Dots understood our vision perfectly. They delivered our e-commerce app on time and within budget, and it's been driving significant revenue for our business."
+                    </p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-8 rounded-xl shadow-sm hover:shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="David T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">David L.</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "As a startup, we needed a development partner we could trust. Dots guided us through the entire process and delivered an app that exceeded our expectations."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <span class="text-purple-600 font-semibold mb-2 inline-block">OUR STORY</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Dots Consultants</h2>
+                    <p class="text-lg text-gray-700 mb-6">
+                        Founded in 2015, Dots Consultants has grown from a small startup to a leading mobile app development agency. Our mission is to bridge the gap between innovative ideas and digital reality.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        We believe that great apps start with understanding people. That's why we take a user-centered approach to everything we do, from initial concept to final deployment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="bg-purple-100 p-4 rounded-lg">
+                            <i class="fas fa-medal text-2xl text-purple-600 mb-2"></i>
+                            <h3 class="font-semibold text-gray-900">Certified</h3>
+                            <p class="text-sm text-gray-600">Google & Apple certified</p>
+                        </div>
+                        <div class="bg-purple-100 p-4 rounded-lg">
+                            <i class="fas fa-award text-2xl text-purple-600 mb-2"></i>
+                            <h3 class="font-semibold text-gray-900">Awarded</h3>
+                            <p class="text-sm text-gray-600">Best app developers 2023</p>
+                        </div>
+                        <div class="bg-purple-100 p-4 rounded-lg">
+                            <i class="fas fa-shield-alt text-2xl text-purple-600 mb-2"></i>
+                            <h3 class="font-semibold text-gray-900">Secure</h3>
+                            <p class="text-sm text-gray-600">GDPR compliant</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in relative">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
+                         alt="Dots Team" 
+                         class="rounded-xl shadow-lg w-full">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-xl w-2/3 z-10 hidden md:block">
+                        <div class="text-3xl font-bold text-purple-600">25+</div>
+                        <div class="text-gray-700">Talented Team Members</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Section -->
+            <div class="mt-20">
+                <div class="text-center mb-12 fade-in">
+                    <span class="text-purple-600 font-semibold mb-2 inline-block">OUR TEAM</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Experts</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Our skilled professionals bring years of experience and passion to every project.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                             alt="Alex Johnson" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">Alex Johnson</h3>
+                            <p class="text-purple-600 mb-2">CEO & Founder</p>
+                            <p class="text-gray-600">10+ years in mobile development</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                             alt="Sarah Miller" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">Sarah Miller</h3>
+                            <p class="text-purple-600 mb-2">Lead Designer</p>
+                            <p class="text-gray-600">UX/UI specialist</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" 
+                             alt="David Chen" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">David Chen</h3>
+                            <p class="text-purple-600 mb-2">iOS Developer</p>
+                            <p class="text-gray-600">Swift expert</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                             alt="Priya Patel" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">Priya Patel</h3>
+                            <p class="text-purple-600 mb-2">Android Developer</p>
+                            <p class="text-gray-600">Kotlin specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Build Your Dream App?</h2>
+                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+                    Let's discuss your project and how we can help bring your vision to life.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact" class="bg-white text-purple-600 hover:bg-purple-100 px-8 py-4 rounded-full text-lg font-semibold transition-all btn-hover-effect">
+                        Get Started
+                    </a>
+                    <a href="#portfolio" class="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 rounded-full text-lg font-semibold transition-all btn-hover-effect">
+                        View Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="bg-gray-50 rounded-xl p-8 h-full">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-purple-100 p-3 rounded-lg">
+                                    <i class="fas fa-phone text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Phone</h3>
+                                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                                    <p class="text-gray-500 text-sm">Mon-Fri, 9:00am-6:00pm</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-purple-100 p-3 rounded-lg">
+                                    <i class="fas fa-envelope text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Email</h3>
+                                    <p class="text-gray-600">hello@dotsconsultants.com</p>
+                                    <p class="text-gray-500 text-sm">Response within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-purple-100 p-3 rounded-lg">
+                                    <i class="fas fa-map-marker-alt text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Location</h3>
+                                    <p class="text-gray-600">123 Tech Street, San Francisco</p>
+                                    <p class="text-gray-500 text-sm">CA 94107, United States</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 hover:bg-purple-600 hover:text-white transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <form class="space-y-6" id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent input-focus-effect">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent input-focus-effect">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent input-focus-effect">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
+                            <select id="service" name="service" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent input-focus-effect">
+                                <option value="">Select a service</option>
+                                <option value="Mobile Development">Mobile App Development</option>
+                                <option value="UI/UX Design">UI/UX Design</option>
+                                <option value="Backend Development">Backend Development</option>
+                                <option value="App Marketing">App Marketing</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none input-focus-effect"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg text-lg font-semibold transition-all btn-hover-effect">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.158170833042!2d-122.3999726846822!3d37.78688297975762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807f10f5a3a9%3A0x3b4e4e9a1765a8a4!2s123%20Tech%20St%2C%20San%20Francisco%2C%20CA%2094107%2C%20USA!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-white rounded-lg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#6557FF"/>
+                                <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" fill="white"/>
+                                <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" fill="#6557FF"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">Dots Consultants</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Transforming ideas into exceptional digital experiences through innovative mobile app development.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Mobile App Development</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Backend Development</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">App Marketing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">App Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#process" class="hover:text-white transition-colors">Process</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <p>123 Tech Street, San Francisco, CA 94107</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone"></i>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope"></i>
+                            <p>hello@dotsconsultants.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Dots Consultants. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(17, 24, 39, 0.95)';
+                header.style.backdropFilter = 'blur(12px)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                header.style.backdropFilter = 'blur(12px)';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Start counters when section is in view
+        const counterSection = document.querySelector('.bg-gray-50');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counterObserver.observe(counterSection);
+
+        // Contact form functionality
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            
+            // Simulate form submission
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize fade-in animations for elements already in view
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
+    </script>
+</body>
+</html>
